@@ -14,10 +14,18 @@ module.exports = {
             .setDescription('Quel utilisateur vous voulez mettre owner sur le bot ?') 
             .setRequired(true)),
   async execute(interaction) {
+    const configPath = path.resolve(__dirname, '../../config.json');
+    const data = await fs.readFile(configPath, 'utf8');
+      const config = JSON.parse(data);
+  if(!config.ownerBot.includes(interaction.user.id)) return message.reply("Vous n'êtes pas autorisé à utiliser cette commande")
     const addUser = interaction.options.getUser('utilisateur')
     command(interaction, addUser)
 },
 async run(client, message, args){
+    const configPath = path.resolve(__dirname, '../../config.json');
+    const data = await fs.readFile(configPath, 'utf8');
+      const config = JSON.parse(data);
+  if(!config.ownerBot.includes(message.author.id)) return message.reply("Vous n'êtes pas autorisé à utiliser cette commande")
   if(args[0]){
     
   try{const user = message.mentions.users.first() !== undefined ? message.mentions.users.first() : client.users.cache.get(args[0])
@@ -44,9 +52,7 @@ async function command(interaction, user) {
       if (!config.ownerBot.includes(user.id)) {
           return interaction.reply({ content: "Il n'est pas owner du bot", ephemeral: true });
       }
-
-      config.ownerBot.shift(user.id);
-
+      config.ownerBot = config.ownerBot.filter(owner => owner !== user.id);
       await fs.writeFile(configPath, JSON.stringify(config, null, 2), 'utf8');
       await interaction.reply({ content: `${user.username} vient d'être supprimé des owners du bot`, ephemeral: true });
   } catch (error) {

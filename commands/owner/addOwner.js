@@ -15,9 +15,17 @@ module.exports = {
             .setRequired(true)),
   async execute(interaction) {
     const addUser = interaction.options.getUser('utilisateur')
+    const configPath = path.resolve(__dirname, '../../config.json');
+    const data = await fs.readFile(configPath, 'utf8');
+      const config = JSON.parse(data);
+  if(!config.ownerBot.includes(interaction.user.id)) return message.reply("Vous n'êtes pas autorisé à utiliser cette commande")
     command(interaction, addUser)
 },
 async run(client, message, args){
+  const configPath = path.resolve(__dirname, '../../config.json');
+    const data = await fs.readFile(configPath, 'utf8');
+      const config = JSON.parse(data);
+  if(!config.ownerBot.includes(message.author.id)) return message.reply("Vous n'êtes pas autorisé à utiliser cette commande")
   if(args[0]){
     
   try{const user = message.mentions.users.first() !== undefined ? message.mentions.users.first() : client.users.cache.get(args[0])
