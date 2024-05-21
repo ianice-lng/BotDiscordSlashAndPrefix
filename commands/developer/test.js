@@ -12,7 +12,7 @@ module.exports = {
   async execute(interaction) {
     command(interaction, interaction.user)
 },
-async run(message, args){
+async run(client, message, args){
   command(message, message.author)
 }
 };

@@ -41,8 +41,7 @@ for (const dossier of commandDossiers) {
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
 	// client.user.setPresence('WATCHING')
-    client.user.setActivity({ type: ActivityType.Watching, name: "Lyrekae"});
-	client.user.setStatus('dnd');
+    client.user.setActivity({ type: ActivityType.Custom, name: "The Eminence In Shadow Bot"});
 })
 
 
@@ -74,6 +73,25 @@ client.on(Events.InteractionCreate, async interaction => {
 			console.error(error);
 		}
 	}
+});
+client.on(Events.MessageCreate, async message => {
+	if (message.author.bot) return;
+    const prefix = '+';
+    if (!message.content.startsWith(prefix)) return;
+    
+    const args = message.content.slice(prefix.length).trim().split(/ +/);
+    const commandName = args.shift().toLowerCase();
+    
+    const command = message.client.commands.get(commandName);
+    if (!command) return;
+    if (typeof command.run === 'function') {
+      try {
+        await command.run(client, message, args);
+      } catch (error) {
+        console.error(error);
+        message.reply('Il y a eu une erreur lors de l\'exécution de la commande.');
+      }
+    }
 });
 // client.once('ready', () => {
 // 	console.log('Bot prêt !');

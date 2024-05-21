@@ -15,7 +15,7 @@ module.exports = {
     const user = interaction.options.getUser('utilisateur') || interaction.user;
     command(interaction, user)
 },
-  async run(message, args){
+  async run(client, message, args){
     const user = message.mentions.users.first() || message.author;
     command(message, user)
   }
