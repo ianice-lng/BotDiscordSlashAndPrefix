@@ -16,7 +16,7 @@ module.exports = {
         // Lock the current channel
         if(!channel.permissionsFor(everyone).serialize().SendMessages){
         // Lock the current channel
-        channel.permissionOverwrites.edit(interaction.guild.roles.everyone.id, { SendMessages: true });
+        channel.permissionOverwrites.edit(interaction.guild.roles.everyone.id, { SendMessages: true });  
         // Optional: Send a confirmation message
         interaction.reply({content: "Le salon a été déverrouillé !", ephemeral: true});}else{
             interaction.reply({content: "Le salon est déjà déverrouillé !" , ephemeral: true})
