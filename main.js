@@ -40,8 +40,7 @@ for (const dossier of commandDossiers) {
 // Bout de code qui permet déclarer le statut du bot et son username.
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
-	// client.user.setPresence('WATCHING')
-    client.user.setActivity({ type: ActivityType.Custom, name: "The Eminence In Shadow Bot"});
+    client.user.setActivity({ type: ActivityType.Custom, name: "Dev by Zaphir.21"});
 })
 
 
