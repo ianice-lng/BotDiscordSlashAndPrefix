@@ -1,7 +1,7 @@
 {
   "name": "eisbot",
   "version": "1.0.0",
-  "description": "",
+  "description": "Ce projet est un bot Discord qui utilise des commandes slash et un préfixe pour interagir avec les utilisateurs.",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
