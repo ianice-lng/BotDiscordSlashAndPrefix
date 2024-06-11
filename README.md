@@ -15,16 +15,7 @@ Ce projet est un bot Discord qui utilise des commandes slash et un préfixe pour
 3. Installez les dépendances en exécutant la commande suivante :
 
    ```bash
-    npm install discord.js@14.15.2 
-    ```
-    ```bash
-    npm install ascii-table
-    ```
-    ```bash
-    npm install fs
-    ```
-    ```bash
-    npm install node-fetch
+    npm install
     ```
 
 4. Configurez le token du bot Discord dans le fichier `config.json`.
