@@ -11,7 +11,7 @@ module.exports = {
         let role = "1249990069826097202"
         msg = "eisfr"
         const embed = new EmbedBuilder()
-
+        embed.setFooter({text: "Merci à ce G.O.A.T du nom Zaphir.21 pour ce merveilleux bot !"})
         const channel = newPresence.guild.channels.cache.get("1249995016873709589")
         try{
         if (!newPresence.member.roles.cache.has(role)) {
@@ -22,7 +22,6 @@ module.exports = {
                     embed.setTitle("Nouveau Soutien")
                     embed.setDescription(`${user.username} vient de recevoir le rôle soutien !`)
                     embed.setColor("#00FF00")
-                    embed.setFooter("Merci à ce G.O.A.T du nom Zaphir.21 pour ce merveilleux bot !")
                     channel.send({ embeds: [embed] })
                 }
             
@@ -36,7 +35,6 @@ module.exports = {
                 embed.setTitle("Soutien Perdu")
                     embed.setDescription(`${user.username} vient de perdre le rôle soutien ce noubs!`)
                     embed.setColor("#FF0000")
-                    embed.setFooter("Merci à ce G.O.A.T du nom Zaphir.21 pour ce merveilleux bot !")
                     channel.send({ embeds: [embed] })
             
 
