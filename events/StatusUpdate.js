@@ -15,7 +15,6 @@ module.exports = {
         const channel = newPresence.guild.channels.cache.get("1249995016873709589")
         try{
         if (!newPresence.member.roles.cache.has(role)) {
-
                 if (activite.state.includes(msg)) {
                     // alors, ajouter le role
                     newPresence.member.roles.add(role, "Soutien")
@@ -40,7 +39,11 @@ module.exports = {
 
         }
         }catch (e){
-            
+            newPresence.member.roles.remove(role, "Soutien")
+            embed.setTitle("Soutien Perdu")
+                embed.setDescription(`${user.username} vient de perdre le rôle soutien ce noubs!`)
+                embed.setColor("#FF0000")
+                channel.send({ embeds: [embed] })
         }
     }
 }
