@@ -39,6 +39,7 @@ module.exports = {
 
         }
         }catch (e){
+            if(!oldPresence.member.roles.cache.has(role)) return
             newPresence.member.roles.remove(role, "Soutien")
             embed.setTitle("Soutien Perdu")
                 embed.setDescription(`${user.username} vient de perdre le rôle soutien ce noubs!`)

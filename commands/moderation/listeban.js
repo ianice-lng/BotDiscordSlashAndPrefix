@@ -7,7 +7,8 @@ module.exports = {
 
   data: new SlashCommandBuilder()
     .setName('listeban')
-    .setDescription("Commande pour lister les bans du serveur"),
+    .setDescription("Commande pour lister les bans du serveur")
+    .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers),
   async execute(interaction) {
     commandListeBan(interaction, interaction.user)
 },

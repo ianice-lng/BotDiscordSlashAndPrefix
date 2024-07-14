@@ -5,6 +5,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('lock')
     .setDescription("Commande pour lock un salon")
+    .setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels)
     .addChannelOption(option =>
         option
             .setName('salon')
@@ -23,6 +24,10 @@ module.exports = {
         }
 },
   async run(client, message, args){
+
+    if(!message.member.permissions.has(PermissionFlagsBits.ManageChannels)){ 
+        return message.reply("Vous n'avez pas les permissions pour utiliser cette commande")
+        }
     let everyone = message.guild.roles.cache.find(x => x.name === '@everyone');
         // Lock the current channel
         if(message.channel.permissionsFor(everyone).serialize().SendMessages){

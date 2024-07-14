@@ -6,6 +6,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('unban')
     .setDescription("Commande pour debannir un utilisateur")
+    .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
     .addStringOption(option =>
         option
             .setName('utilisateur')
@@ -28,6 +29,9 @@ module.exports = {
     command(interaction, user)
 },
   async run(client, message, args){
+  if(!message.member.permissions.has(PermissionFlagsBits.BanMembers)){
+    return message.reply("Vous n'avez pas les permissions pour utiliser cette commande")
+    }
     const user = args[0];
     command(message, user)
   }
