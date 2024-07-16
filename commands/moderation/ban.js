@@ -11,7 +11,7 @@ module.exports = {
     .addUserOption(option =>
         option
             .setName('utilisateur')
-            .setDescription('Quel utilisateur vous voulez mettre owner sur le bot ?') 
+            .setDescription('Quel utilisateur vous voulez ban') 
             .setRequired(true))
     .addStringOption(option =>
         option
@@ -36,7 +36,6 @@ async run(client, message, args){
     }
    
   if(args[0]){
-    
   try{const user = message.mentions.users.first() !== undefined ? message.mentions.users.first() : client.users.cache.get(args[0])
     const memberHighestRole = message.member.roles.highest.position;
     const targetHighestRole = message.mentions.members.first().roles.highest.position;
@@ -44,8 +43,9 @@ async run(client, message, args){
       return message.reply("Tu ne peux pas bannir cet utilisateur !");
     }
     if(user.id){
+    const member = message.guild.members.cache.get(user.id)
         
-    commandBan(message, message.mentions.members.first(), args.slice(1).join(" ") || "Aucune raison fournie", message.member)
+    commandBan(message, member, args.slice(1).join(" ") || "Aucune raison fournie", message.member)
    }else{
     message.reply("Veuillez mentionner un utilisateur")
   }}catch(err){

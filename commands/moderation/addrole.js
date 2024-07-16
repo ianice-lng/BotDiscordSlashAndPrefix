@@ -48,8 +48,8 @@ async run(client, message, args){
       return message.reply("Tu ne peux pas ajouter ce role!");
     }
     if(user.id){
-        
-    commandBan(message, message.mentions.members.first(), message.member, targetRole)
+    const member = message.guild.members.cache.get(user.id)
+    commandBan(message, member, message.member, targetRole)
    }else{
     message.reply("Veuillez mentionner un utilisateur ou un role")
   }}catch(err){
@@ -65,5 +65,6 @@ async function commandBan(message, member, author, role) {
         message.reply(`Le role ${role.name} a bien été ajouté à ${member.user.tag}`)
     }).catch(err => {
         message.reply("Une erreur est survenue")
+        console.log(err)
     })
 }

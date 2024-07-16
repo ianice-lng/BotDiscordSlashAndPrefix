@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, StringSelectMenuBuilder, EmbedBuilder,ActionRowBuilder, PermissionFlagsBits } = require('discord.js');
-const {ownerBot} = require('../../config.json');
+const {ownerBot, soutienRole} = require('../../config.json');
 const fs = require('fs').promises;
 
 module.exports = {

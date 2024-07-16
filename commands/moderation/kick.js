@@ -11,7 +11,7 @@ module.exports = {
     .addUserOption(option =>
         option
             .setName('utilisateur')
-            .setDescription('Quel utilisateur vous voulez mettre owner sur le kick ?') 
+            .setDescription('Quel utilisateur vous voulez kick?') 
             .setRequired(true))
     .addStringOption(option =>
         option
@@ -44,8 +44,9 @@ async run(client, message, args){
       return message.reply("Tu ne peux pas kick cet utilisateur !");
     }
     if(user.id){
+    const member = message.guild.members.cache.get(user.id)
         
-    commandKick(message, message.mentions.members.first(), args.slice(1).join(" ") || "Aucune raison fournie", message.member)
+    commandKick(message, member, args.slice(1).join(" ") || "Aucune raison fournie", message.member)
    }else{
     message.reply("Veuillez mentionner un utilisateur")
   }}catch(err){

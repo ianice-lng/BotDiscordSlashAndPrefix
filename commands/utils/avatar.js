@@ -21,8 +21,6 @@ module.exports = {
   }
 };
 async function command(message, user) {
-  const avatarImage = user.displayAvatarURL({dynamic: true})
-    message.reply({content: `Voici l'avatar de **${user.username}**`, files: [{
-        attachment: avatarImage
-      }]})
+  // const avatarImage = "https://www.detectiveconanworld.com/wiki/images/thumb/d/d1/Kaitou_Kid_Profile.png/550px-Kaitou_Kid_Profile.png"
+    message.reply({content: `Voici l'avatar de **${user.username}**: [url](${user.displayAvatarURL({dynamic: true, size: 1024})})`})
 }
