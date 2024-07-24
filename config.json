@@ -3,5 +3,9 @@
   "clientId": "IDBOT",
   "ownerBot": [
     "IDOWNER"
-  ]
+  ],
+  "soutien":{
+    "role": "ID_ROLE_SOUTIENS",
+    "msg": "message"
+  }
 }
