@@ -18,11 +18,23 @@ module.exports = {
         if (!newPresence.member.roles.cache.has(soutienRole)) {
                 if (activite.state.includes(msg)) {
                     // alors, ajouter le role
+                    
                     newPresence.member.roles.add(soutienRole, "Soutien")
-                    embed.setTitle("Nouveau Soutien")
-                    embed.setDescription(`${user.username} vient de recevoir le rôle soutien !`)
-                    embed.setColor("#00FF00")
-                    channel.send({ embeds: [embed] })
+                .then(() => {
+                    embed.setTitle("Nouveau Soutien");
+                    embed.setDescription(`${newPresence.member.user.username} vient de recevoir le rôle soutien !`);
+                    embed.setColor("#00FF00");
+
+                    if (channel) {
+                        channel.send({ embeds: [embed] });
+                    } else {
+                        console.error("Channel not found.");
+                    }
+                })
+                .catch(error => {
+                    
+                });
+                    
                 }
             
         }

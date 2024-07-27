@@ -36,7 +36,8 @@ async run(client, message, args){
     }
    
   if(args[0]){
-  try{const user = message.mentions.users.first() !== undefined ? message.mentions.users.first() : client.users.cache.get(args[0])
+    const guild = client.guilds.cache.get(message.guild.id)
+  try{const user = message.mentions.users.first() !== undefined ? message.mentions.users.first() : guild.member.cache.get(args[0])
     const memberHighestRole = message.member.roles.highest.position;
     const targetHighestRole = message.mentions.members.first().roles.highest.position;
     if (targetHighestRole <= memberHighestRole) {

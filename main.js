@@ -37,12 +37,12 @@ for (const dossier of commandDossiers) {
   }
 }
 
+
 // Bout de code qui permet déclarer le statut du bot et son username.
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setActivity({ type: ActivityType.Custom, name: "Dev by Zaphir.21"});
+    client.user.setActivity({ type: ActivityType.Custom, name: "Dev By Zaphir.21" });
 })
-
 
 
 // Bout de code qui permet de retourner une erreur lors ce que une commande est mal écrite dans le code.
