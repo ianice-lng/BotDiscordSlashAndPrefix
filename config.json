@@ -4,6 +4,7 @@
   "ownerBot": [
     "IDOWNER"
   ],
+  "status" : "message status",
   "soutien":{
     "role": "ID_ROLE_SOUTIENS",
     "msg": "message"

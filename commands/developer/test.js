@@ -13,6 +13,7 @@ module.exports = {
     command(interaction, interaction.user)
 },
 async run(client, message, args){
+  
   command(message, message.author)
 }
 };

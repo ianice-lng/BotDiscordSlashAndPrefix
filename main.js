@@ -2,7 +2,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits,SlashCommandBuilder , ActivityType} = require('discord.js');
-const { token } = require('./config.json');
+const { token, status } = require('./config.json');
 const { type } = require('node:os');
 
 
@@ -41,7 +41,7 @@ for (const dossier of commandDossiers) {
 // Bout de code qui permet déclarer le statut du bot et son username.
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setActivity({ type: ActivityType.Custom, name: "Dev By Zaphir.21" });
+    client.user.setActivity({ type: ActivityType.Custom, name: status });
 })
 
 
